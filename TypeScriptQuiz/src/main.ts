@@ -28,13 +28,6 @@ function buildFetchQuestionsUrl(): string {
 
   let QUESTION_URL = "";
 
-  //   if (german) {
-  //     QUESTION_URL =
-  //       BASE_URL + (easy ? "leicht.json" : hard ? "schwer.json" : "");
-  //   } else if (english) {
-  //     QUESTION_URL = BASE_URL + (easy ? "easy.json" : hard ? "hard.json" : "");
-  //   }
-
   if (german && easy) {
     QUESTION_URL = BASE_URL + "leicht.json";
   } else if (german && hard) {
