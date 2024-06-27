@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/assets/style.css" />
+    <title>TypeScript Quiz</title>
+  </head>
+  <body>
+    <main>
+      <h1>TypeScript Quiz</h1>
+      <form action="" id="form">
+        <div class="form-div">
+          <p>Choose your level:</p>
+          <input type="radio" id="easy" name="level" value="easy" />
+          <label for="easy">easy</label><br />
+          <input type="radio" id="hard" name="level" value="hard" />
+          <label for="hard">hard</label><br />
+        </div>
+        <div class="form-div">
+          <p>Choose your language:</p>
+          <input type="radio" id="german" name="language" value="german" />
+          <label for="german">german</label><br />
+          <input type="radio" id="english" name="language" value="english" />
+          <label for="english">english</label><br />
+        </div>
+
+        <input type="submit" value="Submit" />
+      </form>
+
+      <output id="output"></output>
+    </main>
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>
