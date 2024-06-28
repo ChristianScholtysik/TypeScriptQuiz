@@ -6,6 +6,8 @@ const hardQuestions = document.getElementById("hard") as HTMLInputElement;
 const germanLanguage = document.getElementById("german") as HTMLInputElement;
 const englishLanguage = document.getElementById("english") as HTMLInputElement;
 const output = document.getElementById("output") as HTMLElement;
+const loadingIndicator = document.querySelector(".loader") as HTMLSpanElement;
+loadingIndicator.style.display = "none";
 
 let currentQuestionIndex = 0;
 let score = 0;
@@ -65,13 +67,14 @@ function fetchQuestions(): void {
       }
     })
     .finally(() => {
-      // TODO: Add Loading Indicator
+      loadingIndicator.style.display = "none";
     });
 }
 
 //*
 function displayQuestion(): void {
   if (output && questions.length > 0) {
+    // loadingIndicator.style.display = "block";
     const question = questions[currentQuestionIndex];
     const answersHtml = question.answers
       .map((answer, index) => {
@@ -123,6 +126,7 @@ function handleAnswerSubmit(event: Event): void {
 
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
+      // loadingIndicator.style.display = "block";
       setTimeout(displayQuestion, 1000);
     } else {
       displayFinalScore();
@@ -132,6 +136,6 @@ function handleAnswerSubmit(event: Event): void {
 
 function displayFinalScore(): void {
   if (output) {
-    output.innerHTML = `<div class="final-score">You scored ${score} out of ${questions.length}</div>`;
+    output.innerHTML = `<div class="final-score"><div class="emoji">🎉</div> You scored ${score} out of ${questions.length} <div>🎉</div></div>`;
   }
 }

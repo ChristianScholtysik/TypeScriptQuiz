@@ -12,14 +12,19 @@
       <form action="" id="form">
         <div class="form-div">
           <p>Choose your level:</p>
-          <input type="radio" id="easy" name="level" value="easy" />
+          <input type="radio" id="easy" name="level" value="easy" required />
           <label for="easy">easy</label><br />
           <input type="radio" id="hard" name="level" value="hard" />
           <label for="hard">hard</label><br />
         </div>
         <div class="form-div">
           <p>Choose your language:</p>
-          <input type="radio" id="german" name="language" value="german" />
+          <input
+            type="radio"
+            id="german"
+            name="language"
+            value="german"
+            required />
           <label for="german">german</label><br />
           <input type="radio" id="english" name="language" value="english" />
           <label for="english">english</label><br />
@@ -27,7 +32,7 @@
 
         <input type="submit" value="Submit" />
       </form>
-
+      <span class="loader"></span>
       <output id="output"></output>
     </main>
     <script type="module" src="./src/main.ts"></script>
