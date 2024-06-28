@@ -77,7 +77,7 @@ function displayQuestion(): void {
     // loadingIndicator.style.display = "block";
     const question = questions[currentQuestionIndex];
     const answersHtml = question.answers
-      .map((answer, index) => {
+      .map((answer: string, index: number) => {
         return `<div>
                     <input type="radio" id="answer${index}" name="answer" value="${index}">
                     <label for="answer${index}">${answer}</label>
@@ -106,15 +106,26 @@ function displayQuestion(): void {
 
 function handleAnswerSubmit(event: Event): void {
   event.preventDefault();
-  const selectedAnswer = (
-    document.querySelector('input[name="answer"]:checked') as HTMLInputElement
-  )?.value;
+  const selectedAnswer = document.querySelector(
+    'input[name="answer"]:checked'
+  ) as HTMLInputElement;
 
   if (selectedAnswer !== undefined) {
+    const answerValue = selectedAnswer.value;
     const isCorrect =
-      parseInt(selectedAnswer, 10) === questions[currentQuestionIndex].correct;
+      parseInt(answerValue, 10) === questions[currentQuestionIndex].correct;
+
     if (isCorrect) {
       score++;
+      selectedAnswer.parentElement!.classList.add("correct-answer");
+    } else {
+      selectedAnswer.parentElement!.classList.add("wrong-answer");
+
+      const correctAnswerIndex = questions[currentQuestionIndex].correct;
+      const correctAnswerElement = document.querySelector(
+        `input[name="answer"][value="${correctAnswerIndex}"]`
+      ) as HTMLInputElement;
+      correctAnswerElement.parentElement!.classList.add("correct-answer");
     }
 
     const feedback = document.getElementById("feedback");
@@ -126,10 +137,9 @@ function handleAnswerSubmit(event: Event): void {
 
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
-      // loadingIndicator.style.display = "block";
-      setTimeout(displayQuestion, 1000);
+      setTimeout(displayQuestion, 1200);
     } else {
-      displayFinalScore();
+      setTimeout(displayFinalScore, 1000);
     }
   }
 }
