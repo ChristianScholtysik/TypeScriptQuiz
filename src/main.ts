@@ -110,16 +110,16 @@ function handleAnswerSubmit(event: Event): void {
     'input[name="answer"]:checked'
   ) as HTMLInputElement;
 
-  if (selectedAnswer !== undefined) {
+  if (selectedAnswer) {
     const answerValue = selectedAnswer.value;
     const isCorrect =
       parseInt(answerValue, 10) === questions[currentQuestionIndex].correct;
 
     if (isCorrect) {
       score++;
-      selectedAnswer.parentElement!.classList.add("correct-answer");
+      selectedAnswer.parentElement!.classList.add("correct-answer"); //TODO: Check the !
     } else {
-      selectedAnswer.parentElement!.classList.add("wrong-answer");
+      selectedAnswer.parentElement!.classList.add("wrong-answer"); //TODO: Check the!
 
       const correctAnswerIndex = questions[currentQuestionIndex].correct;
       const correctAnswerElement = document.querySelector(
