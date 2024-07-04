@@ -12,6 +12,19 @@ loadingIndicator.style.display = "none";
 let currentQuestionIndex = 0;
 let score = 0;
 let questions: IQuestion[] = [];
+let randomSticker: string[] = [
+  "https://storage.googleapis.com/sticker-prod/KDL5zVKem8VMmmuqz6Ls/0-1.thumb128.webp",
+  "https://storage.googleapis.com/sticker-prod/KDL5zVKem8VMmmuqz6Ls/6-1.thumb128.webp",
+  "https://storage.googleapis.com/sticker-prod/KDL5zVKem8VMmmuqz6Ls/11-1.thumb128.webp",
+  "https://storage.googleapis.com/sticker-prod/KDL5zVKem8VMmmuqz6Ls/2-1.thumb128.webp",
+  "https://storage.googleapis.com/sticker-prod/KDL5zVKem8VMmmuqz6Ls/12-1.thumb128.webp",
+  "https://storage.googleapis.com/sticker-prod/KDL5zVKem8VMmmuqz6Ls/15-1.thumb128.webp",
+  "https://storage.googleapis.com/sticker-prod/KDL5zVKem8VMmmuqz6Ls/14-1.thumb128.webp",
+  "https://storage.googleapis.com/sticker-prod/KDL5zVKem8VMmmuqz6Ls/26-1.thumb128.webp",
+  "https://storage.googleapis.com/sticker-prod/KDL5zVKem8VMmmuqz6Ls/22-1.thumb128.webp",
+  "https://storage.googleapis.com/sticker-prod/KDL5zVKem8VMmmuqz6Ls/9-1.thumb128.webp",
+  "https://storage.googleapis.com/sticker-prod/KDL5zVKem8VMmmuqz6Ls/27-1.thumb128.webp",
+];
 
 //* Event Listener
 
@@ -85,15 +98,22 @@ function displayQuestion(): void {
       })
       .join("");
 
+    //* get random sticker from array
+    const randomStickerIndex = Math.floor(Math.random() * randomSticker.length);
+
     output.innerHTML = `<div class="question-card">
                             <h2>${question.question}</h2>
                             <form id="answer-form">
                               ${answersHtml}
-                              <button type="submit">Submit Answer</button>
+                              <button type="submit">Next question</button>
                             <div id="questionTimer">Question ${
                               currentQuestionIndex + 1
                             } of ${questions.length} questions </div>
                             </form>
+                            <div>
+                            <img src="${
+                              randomSticker[randomStickerIndex]
+                            }"></div>
                             <div id="feedback"></div>
                           </div>`;
 
@@ -144,8 +164,11 @@ function handleAnswerSubmit(event: Event): void {
   }
 }
 
+//* Display Score
 function displayFinalScore(): void {
+  const scoreImage =
+    "https://storage.googleapis.com/sticker-prod/KDL5zVKem8VMmmuqz6Ls/14-1.thumb128.webp";
   if (output) {
-    output.innerHTML = `<div class="final-score"><div class="emoji">🎉</div> You scored ${score} out of ${questions.length} <div>🎉</div></div>`;
+    output.innerHTML = `<div class="final-score"><div class="emoji">🎉</div> You scored ${score} out of ${questions.length}<img src="${scoreImage}"> <div>🎉</div></div>`;
   }
 }

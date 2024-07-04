@@ -44,7 +44,7 @@ h1 {
 
 .question-card button[type="submit"] {
   margin-top: 1rem;
-  background-color: rgb(37, 131, 159);
+  background-color: rgb(153, 124, 7);
   padding: 0.5em 5em;
   border: none;
   border-radius: 20px;
@@ -52,7 +52,7 @@ h1 {
 }
 
 .question-card button[type="submit"]:hover {
-  background-color: rgb(32, 153, 160);
+  background-color: rgb(160, 134, 32);
   cursor: pointer;
 }
 
@@ -87,14 +87,14 @@ h1 {
 
 input[type="submit"] {
   margin-top: 1rem;
-  background-color: rgb(37, 131, 159);
+  background-color: rgb(160, 134, 32);
   padding: 0.5em 5em;
   border: none;
   border-radius: 20px;
   color: #fff;
 }
 input[type="submit"]:hover {
-  background-color: rgb(32, 153, 160);
+  background-color: rgb(160, 134, 32);
   cursor: pointer;
 }
 #questionTimer {
